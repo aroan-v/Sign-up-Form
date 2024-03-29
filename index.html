@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="club-membership-form">
+      <a href="https://github.com/aroan-v/Sign-up-Form" target="_blank">
+        <img
+          class="club-aroan-logo"
+          src="images/Club Aroan Logo.svg"
+          alt="Club Aroan Logo"
+          width="180"
+        />
+      </a>
+      <p class="club-description">
+        Unlock a world of cozy getaways and dreamy escapes by creating your
+        exclusive account. <br /><br />
+        Be the first to access personalized recommendations, insider updates,
+        and member-only offers!
+      </p>
+
+      <form class="sign-up-form" action="#" method="get">
+        <fieldset class="form-input">
+          <span class="required-info"
+            >Fields marked with <span class="required">*</span> are
+            required.</span
+          >
+
+          <div class="input-container">
+            <input
+              type="text"
+              id="full_name"
+              name="full_name"
+              aria-label="Full Name"
+              placeholder=" "
+              minlength="3"
+              required
+              onfocus="toggleVisibility(0)"
+            />
+            <label for="full_name"
+              >Full Name: <span class="required">*</span></label
+            >
+          </div>
+
+          <div class="input-container">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder=" "
+              aria-label="Email"
+              onblur="inputValidation('email')"
+              onfocus="inputDefaultState('email'); toggleVisibility(0)"
+              required
+            />
+            <label for="email">Email: <span class="required">*</span></label>
+            <span class="invalid-message">Enter a valid email!</span>
+          </div>
+
+          <div class="input-container">
+            <input
+              type="tel"
+              id="phone_number"
+              name="phone_number"
+              pattern="[0-9]{9}"
+              placeholder=" "
+              title="Enter a 9 digit phone number"
+              aria-label="Phone Number"
+              onfocus="inputDefaultState('phoneNumber') ;toggleVisibility(0)"
+              onblur="inputValidation('phoneNumber')"
+              required
+            />
+            <label for="phone_number"
+              >Phone Number: <span class="required">*</span>
+            </label>
+            <span class="invalid-message">Enter a 9 digit phone number!</span>
+          </div>
+
+          <div class="input-container password-container">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder=" "
+              aria-label="Password"
+              oninput="passwordCheck()"
+              onblur="toggleVisibility(0); inputValidation('password1')"
+              onfocus="inputDefaultState('password1')"
+              pattern="^(?=.*[A-Z])(?=.*\d).{8,20}$"
+              required
+            />
+
+            <div class="visibility-button" onclick="toggleVisibility(1)">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                class="closed-eye"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16.4108 17.3042L13.7988 14.6923C12.6719 15.2054 11.4459 15.4639 10.2078 15.4496C8.93126 15.4654 7.66796 15.1899 6.51397 14.644C5.61946 14.2076 4.81623 13.6048 4.14717 12.868C3.43697 12.1067 2.87878 11.2167 2.50263 10.2459L2.4248 10.0015L2.50653 9.75555C3.06909 8.3206 4.01584 7.06822 5.24301 6.13569L3.2031 4.09578L4.30283 2.99683L17.5097 16.2037L16.4123 17.3042H16.4108ZM6.3443 7.23776C5.34958 7.93505 4.56407 8.89063 4.07246 10.0015C5.1266 12.4336 7.55834 13.976 10.2078 13.893C11.0248 13.8997 11.8372 13.7681 12.6104 13.5038L11.2094 12.1029C10.8976 12.2557 10.555 12.3356 10.2078 12.3364C8.9216 12.3283 7.88095 11.2877 7.87288 10.0015C7.87325 9.65341 7.95311 9.31001 8.10636 8.99749L6.3443 7.23776ZM16.3189 12.8111L15.2356 11.7285C15.6913 11.2132 16.0649 10.6307 16.3431 10.0015C15.2903 7.56821 12.8577 6.02524 10.2078 6.11001C10.0155 6.11001 9.82251 6.11701 9.63572 6.13025L8.26202 4.755C8.90149 4.6182 9.55383 4.55062 10.2078 4.55342C11.4843 4.53758 12.7476 4.81307 13.9016 5.35895C14.7961 5.79537 15.5993 6.39813 16.2684 7.13503C16.9782 7.89539 17.5364 8.78429 17.9129 9.75399L17.9907 10.0015L17.909 10.2474C17.5446 11.1955 17.0055 12.0667 16.3197 12.8158L16.3189 12.8111Z"
+                  fill="#2E3A59"
+                />
+              </svg>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                class="open-eye"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9.79272 15.4481C8.51622 15.464 7.25291 15.1885 6.09893 14.6425C5.20443 14.2061 4.4012 13.6033 3.73213 12.8665C3.02344 12.1046 2.46543 11.2154 2.0876 10.2459L2.00977 9.99999L2.09149 9.75405C2.46959 8.78541 3.0264 7.89647 3.73291 7.13353C4.40173 6.39672 5.2047 5.79397 6.09893 5.35745C7.25292 4.81155 8.51622 4.53605 9.79272 4.55192C11.0692 4.53608 12.3325 4.81157 13.4865 5.35745C14.381 5.79387 15.1843 6.39663 15.8533 7.13353C16.5633 7.89435 17.1215 8.7838 17.4979 9.75405L17.5757 9.99999L17.494 10.2459C16.273 13.4243 13.1971 15.502 9.79272 15.4481ZM9.79272 6.10851C7.1433 6.02549 4.71156 7.56789 3.65742 9.99999C4.71138 12.4322 7.14324 13.9747 9.79272 13.8915C12.4421 13.9743 14.8737 12.4319 15.928 9.99999C14.8753 7.56671 12.4426 6.02374 9.79272 6.10851ZM9.79272 12.3349C8.6699 12.3423 7.69862 11.5545 7.47415 10.4543C7.24969 9.35415 7.83474 8.24884 8.87074 7.81583C9.90674 7.38281 11.1043 7.74304 11.7295 8.67572C12.3548 9.60841 12.233 10.8531 11.4388 11.6469C11.004 12.0868 10.4113 12.3345 9.79272 12.3349Z"
+                  fill="#2E3A59"
+                />
+              </svg>
+            </div>
+
+            <label for="password"
+              >Password: <span class="required">*</span></label
+            >
+
+            <div class="password-message">
+              <span class="length-validation"
+                >Length must be 8 to 20 characters. <br
+              /></span>
+              <span class="number-validation"
+                >Must contain at least 1 number. <br
+              /></span>
+              <span class="uppercase-validation"
+                >Must have at least 1 uppercase letter.</span
+              >
+            </div>
+          </div>
+
+          <div class="input-container">
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              placeholder=" "
+              aria-label="Confirm Password"
+              oninput="passwordCheck()"
+              onfocus="toggleVisibility(0)"
+              required
+            />
+            <label for="confirmPassword"
+              >Confirm Password: <span class="required">*</span>
+            </label>
+            <span id="password-error"></span>
+          </div>
+        </fieldset>
+        <button class="submit-button" type="submit">Create Account</button>
+      </form>
+      <div class="existing-member">
+        Already an existing member? Login
+        <a href="#" onclick="reloadWebsite()">here</a>.
+      </div>
+    </div>
+    <div class="form-image">
+      <img
+        class="img0"
+        src="images/image-1.png"
+        alt="Club Aroan's model - Marco"
+      />
+      <img
+        class="img1"
+        src="images/image-2.png"
+        alt="Club Aroan's model - Elaine"
+      />
+      <img
+        class="img2"
+        src="images/image-3.png"
+        alt="Club Aroan's model - Anton"
+      />
+
+      <div class="drop-shadow"></div>
+      <div class="logo-background"></div>
+      <div class="credits">
+        <a href="https://github.com/aroan-v/Sign-up-Form" target="_blank">
+          <img
+            class="aroan-logo"
+            src="images/Aroan Logo.png"
+            alt="Aroan's Logo"
+          />
+        </a>
+        <a href="https://openai.com/dall-e-3" target="_blank">
+          <img
+            class="dall-e-logo"
+            src="images/Dall-E Logo.png"
+            alt="Dall-E Logo"
+          />
+        </a>
+      </div>
+      <!-- <img
+        class="base-image"
+        src="images/image-4.png"
+        alt="Club Aroan's beach"
+      /> -->
+    </div>
+  </body>
+</html>
+
+<div class="parent-container">
+  <div class="child1"></div>
+  <div class="child2"></div>
+</div>

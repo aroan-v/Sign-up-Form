@@ -1,0 +1,473 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* End of CSS Reset */
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+:root {
+  --gray: gray;
+  --background-color: #f7f3ef;
+}
+
+/* Font Face Definitions for Inter Font Family */
+
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  src: url("fonts/Inter-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 700;
+  src: url("fonts/Inter-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-weight: normal;
+  font-style: italic;
+  src: url("fonts/Inter-Italic.ttf") format("truetype");
+}
+
+body {
+  font-family: Inter;
+  display: flex;
+  background-color: var(--background-color);
+  height: 100vh;
+  min-height: 800px;
+}
+
+/* Form Container */
+
+.club-membership-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 43px;
+  width: 60%;
+  padding: 20px 0;
+}
+
+.club-description,
+.existing-member,
+.required-info {
+  font-style: italic;
+  font-size: 13px;
+  text-align: center;
+  width: 300px;
+
+  line-height: normal;
+}
+
+.existing-member > a {
+  font-weight: 700;
+}
+
+.required-info {
+  margin-bottom: 10%;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+  padding: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container {
+  position: relative;
+  width: 200px;
+}
+
+.invalid-message,
+.password-message,
+#password-error {
+  font-style: italic;
+  font-size: 9px;
+  color: red;
+  position: absolute;
+  top: 30px;
+  left: 0px;
+  opacity: 1;
+  transition: opacity 5s ease-out;
+}
+
+/* Input and Label stylings */
+
+input {
+  width: 200px;
+  border: none; /* No border initially */
+  outline: none; /* No outline on focus */
+  border-bottom: 2px solid var(--gray); /* Bottom border with gray color */
+  background-color: var(--background-color); /* Background color */
+  padding: 5px 0; /* Padding for content */
+  transition: border-color 300ms; /* Smooth transition for border color */
+  margin-bottom: 40px;
+}
+
+label {
+  color: #0a004a;
+  font-family: Inter;
+  font-size: 12px;
+}
+
+button[type="submit"] {
+  padding: 10px 14px;
+  border-radius: 79px;
+  border-style: hidden;
+  background: #9d3500;
+  margin: 18px 0 0 0;
+
+  color: #fff;
+
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  line-height: normal;
+
+  align-self: center;
+}
+
+input:focus {
+  border-color: black; /* Border color change on focus */
+  outline: none;
+}
+
+input + label,
+input + .visibility-button + label {
+  font-size: 15px;
+  position: absolute;
+  left: 0;
+  top: 5px;
+  color: var(--gray);
+  pointer-events: none; /* Label doesn't interfere with pointer events */
+  transition: transform 300ms; /* Smooth transition for transformation */
+  transform-origin: left; /* Think of this as an imaginary point around which all these transformations happen */
+}
+
+input:focus + label,
+input:focus + .visibility-button + label,
+input:not(:placeholder-shown) + label,
+input:not(:placeholder-shown) + .visibility-button + label {
+  transform: scale(0.8) translateY(-25px); /* Scale down and move up on focus or non-empty input */
+}
+
+input:not(:placeholder-shown):valid ~ .invalid-message,
+input:placeholder-shown ~ .invalid-message,
+input:focus:not(:placeholder-shown) ~ .invalid-message {
+  display: none;
+}
+
+/* Password message expander */
+
+.password-container:focus-within {
+  height: 80px;
+}
+
+.password-message {
+  display: none;
+}
+
+input:placeholder-shown ~ .password-message {
+  color: gray;
+}
+
+.password-container:focus-within .password-message {
+  display: block;
+}
+
+.invalid-color {
+  transition: color 0.2s ease-in;
+  color: red;
+}
+
+.invalid-border-color {
+  transition: border-color 0.2s ease-in;
+  border-color: red;
+}
+
+.required {
+  color: red;
+}
+
+/* Password Visibility Button stylings */
+
+.visibility-button {
+  position: absolute;
+  right: 0px;
+  top: 5px;
+}
+
+.open-eye,
+.password-visible .closed-eye {
+  display: none;
+}
+
+.password-visible .open-eye {
+  display: inline-block;
+}
+
+.password-hidden .closed-eye {
+  display: inline-block;
+}
+
+/* Animation stylings */
+
+.errorShakeAnimation {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-6px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+/* Image Container */
+
+.form-image {
+  position: relative;
+  /* height: 100vh; */
+  width: 40%;
+  /* overflow: hidden; */
+}
+
+.credits {
+  position: absolute;
+  bottom: 5%;
+  width: 100%;
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+  overflow-wrap: normal;
+  justify-content: center;
+  padding: 0px;
+}
+
+.img0,
+.img1,
+.img2 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  object-fit: cover;
+  transition: opacity 0.5s ease;
+}
+
+.base-image {
+  width: 100%;
+  height: 100%;
+}
+
+.drop-shadow {
+  height: 100%;
+  width: 27.507px;
+  background: linear-gradient(
+    90deg,
+    #000 -32.06%,
+    rgba(48, 153, 175, 0) 52.72%
+  );
+  position: absolute;
+}
+
+.logo-background {
+  width: 100%;
+  position: absolute;
+  height: 272.431px;
+  bottom: 0%;
+  background: linear-gradient(0deg, #0a004a 0%, rgba(10, 0, 74, 0) 97.1%);
+}
+
+/* Hover effect */
+
+.aroan-logo:hover,
+.dall-e-logo:hover,
+.club-aroan-logo:hover {
+  transform: scale(1.05); /* Enlarge the image on hover */
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background: #b14d1a;
+}
+
+/* Active effect */
+
+.aroan-logo:active,
+.dall-e-logo:active,
+.club-aroan-logo:active {
+  transform: scale(0.95);
+  transition: none;
+}
+
+button[type="submit"]:active {
+  background: #000;
+}
+
+/* Hide the image container when the window width is less than 500px */
+@media only screen and (max-width: 600px) {
+  .club-membership-form {
+    width: 100vw;
+  }
+  .form-image {
+    display: none;
+  }
+}
